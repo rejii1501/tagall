@@ -16,7 +16,7 @@ LOGGER = logging.getLogger(__name__)
 api_id = API_ID
 api_hash = API_HASH
 bot_token = TOKEN
-kntl = TelegramClient('kynan', api_id, api_hash).start(bot_token=bot_token)
+kntl = TelegramClient('rezi', api_id, api_hash).start(bot_token=bot_token)
 spam_chats = []
 
 
@@ -28,11 +28,11 @@ async def help(event):
     link_preview=False,
     buttons=(
       [
-        Button.url('Guaa', 't.me/aksaraxzb'),
+        Button.url('ya', 't.me/rewetzy'),
       ],
       [
-        Button.url('Support Gua', 't.me/SupprotRewe'),
-        Button.url('Ch Gua', 't.me/aksarabold'),
+        Button.url('y', 't.me/alwaysrtzy'),
+        Button.url('anuan', 't.me/lordevilofficial'),
       ],
     )
   )
@@ -79,22 +79,22 @@ async def mentionall(event):
     return await event.respond("𝙨𝙞 𝙖𝙣𝙟𝙚𝙣𝙜 𝙙𝙞𝙗𝙞𝙡𝙖𝙣𝙜 𝙠𝙖𝙨𝙞 𝙥𝙚𝙨𝙖𝙣 𝙞𝙙𝙞𝙤𝙩 𝙗𝙚𝙩 𝙗𝙤𝙘𝙖𝙝 𝙚𝙩𝙙𝙖𝙝")
   
   spam_chats.append(chat_id)
-  usrnum = 0
   usrtxt = ''
+  usrnum = 0
   async for usr in kntl.iter_participants(chat_id):
     if not chat_id in spam_chats:
       break
+    usrtxt += f"🍌 [{usr.first_name}](tg://user?id={usr.id})\n"
     usrnum += 1
-    usrtxt += f"🀄︎ [{usr.first_name}](tg://user?id={usr.id})\n"
-    if usrnum == 5:
-      if mode == "teks":
-        txt = f"{usrtxt}\n\n{msg}"
+    if mode == "teks":
+      if usrnum == 5:
         await kntl.send_message(chat_id, txt)
+        txt = f"{usrtxt}\n\n{msg}"
       elif mode == "balas":
         await msg.reply(usrtxt)
       await asyncio.sleep(2)
-      usrnum = 0
       usrtxt = ''
+      usrnum = 0
   try:
     spam_chats.remove(chat_id)
   except:
